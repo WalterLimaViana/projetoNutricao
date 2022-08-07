@@ -1,5 +1,20 @@
 var title = document.querySelector('.title');
-		console.log(title);
-		console.log(title.textContent);
+title.textContent = "Nutrição";
 
-		title.textContent = "Nutrição";
+//pegar dados para calcular o IMC
+var paciente = document.querySelector('#first');
+console.log(paciente);
+var tdPeso = paciente.querySelector('.info-peso');
+var peso = tdPeso.textContent;
+var tdAltura = paciente.querySelector('.info-altura');
+var altura = tdAltura.textContent;
+console.log(peso);
+console.log(altura);
+//Pegando o valor do IMC na tabela para substituir pelo cálculo:
+var tdImc = paciente.querySelector('.info-imc');
+console.log(tdImc);
+// Calculando o IMC
+var imc = peso / (altura * altura);
+//Colocar o resultado do IMC dentro da tabela no html
+tdImc.textContent = imc;
+
