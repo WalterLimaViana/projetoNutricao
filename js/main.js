@@ -18,9 +18,13 @@ for (var i = 0; i < pacientes.length; i++) {
     console.log(tdImc);
 
     if (peso <= 0 || peso >= 400) {
-        alert('Peso Inválido!');
+        // alert('Peso Inválido!');
+        tdImc.textContent = 'Peso Inválido!';
+        paciente.classList.add('paciente-error');
     } else if (altura <= 0 || altura >= 3.00) {
-        alert('Altura Inválida!');
+        // alert('Altura Inválida!');
+        tdImc.textContent = 'Altura Inválida!';
+        paciente.classList.add('paciente-error');
     } else {
         // Calculando o IMC
         var imc = peso / (altura * altura);

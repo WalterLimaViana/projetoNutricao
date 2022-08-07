@@ -127,3 +127,9 @@ button button:disabled {
 .campo-invalido {
   border: 1px solid red;
 } /*# sourceMappingURL=index.css.map */
+.paciente-error {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+}
