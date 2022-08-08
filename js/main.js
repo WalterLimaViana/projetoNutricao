@@ -11,11 +11,11 @@ for (var i = 0; i < pacientes.length; i++) {
     var peso = tdPeso.textContent;
     var tdAltura = paciente.querySelector('.info-altura');
     var altura = tdAltura.textContent;
-    console.log(peso);
-    console.log(altura);
+    // console.log(peso);
+    // console.log(altura);
     //Pegando o valor do IMC na tabela para substituir pelo cálculo:
     var tdImc = paciente.querySelector('.info-imc');
-    console.log(tdImc);
+    // console.log(tdImc);
 
     if (peso <= 0 || peso >= 400) {
         // alert('Peso Inválido!');
@@ -29,8 +29,16 @@ for (var i = 0; i < pacientes.length; i++) {
         // Calculando o IMC
         var imc = peso / (altura * altura);
         //Colocar o resultado do IMC dentro da tabela no html
-        tdImc.textContent = imc.toFixed(0);
+        tdImc.textContent = imc.toFixed(1);
     }
 }
 
+//Botão Adicionar
+var adicionarPaciente = document.querySelector('#adicionar-paciente');
+console.log(adicionarPaciente);
+adicionarPaciente.addEventListener('click', submitForm);
 
+function submitForm() {
+    alert('Enviado com sucesso!');
+    console.log('Enviado com sucesso!');
+}
