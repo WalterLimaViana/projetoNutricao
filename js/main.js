@@ -35,10 +35,47 @@ for (var i = 0; i < pacientes.length; i++) {
 
 //Botão Adicionar
 var adicionarPaciente = document.querySelector('#adicionar-paciente');
-console.log(adicionarPaciente);
+// console.log(adicionarPaciente);
 adicionarPaciente.addEventListener('click', submitForm);
 
-function submitForm() {
-    alert('Enviado com sucesso!');
-    console.log('Enviado com sucesso!');
+function submitForm(event) {
+    //Para mudar o padrão do formulário
+    event.preventDefault();
+    //Pegar valores que estão nos inputs
+    var form = document.querySelector('#form-adiciona');
+    var nome = form.nome.value;
+    var peso = form.peso.value;
+    var altura = form.altura.value;
+    var gordura = form.gordura.value;
+    //Criando os elementos da tabela:
+    //Criar o tr:
+    var pacienteTr = document.createElement('tr');
+    //Criar os td's:
+    var nomeTd = document.createElement('td');
+    var pesoTd = document.createElement('td');
+    var alturaTd = document.createElement('td');
+    var gorduraTd = document.createElement('td');
+    var imcTd = document.createElement('td');
+    //Inserir os nomes de cada coluna que vai receber os values
+    nomeTd.textContent = nome;
+    pesoTd.textContent = peso;
+    alturaTd.textContent = altura;
+    gorduraTd.textContent = gordura;
+
+    //Inserindo as td's dentro da tr
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+    //Inserindo os dados do novo paciente dentro da tabela pacientes
+    var tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(pacienteTr);
+
+
+
+
+
+
+    // alert('Enviado com sucesso!');
+    // console.log('Enviado com sucesso!');
 }
