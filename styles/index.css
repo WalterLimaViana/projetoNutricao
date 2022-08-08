@@ -133,3 +133,9 @@ button button:disabled {
   font-weight: bold;
   font-size: 1.1em;
 }
+
+#mensagens-erro {
+  color: red;
+  font-weight: bold;
+  font-size: 1.1em;
+}
