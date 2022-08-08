@@ -11,6 +11,14 @@ function submitForm(event) {
     var paciente = getInformacoes(form);
     //Monta o tr do novo paciente para ser inserido na tabela
     var pacienteTr = montarTabela(paciente);
+    //Validando as informações
+    var erros = validaPaciente(paciente);
+    if (erros.length > 0) {
+        var mensagemErro = document.querySelector('#mensagem-erro');
+        mensagemErro.textContent = erros;
+        return;
+    }
+
     //Insere os dados do novo paciente dentro da tabela pacientes
     var tabela = document.querySelector('#tabela-pacientes');
     tabela.appendChild(pacienteTr);
@@ -50,4 +58,19 @@ function montarTd(dado, classe) {
     td.textContent = dado;
     td.classList.add(classe);
     return td;
+}
+
+function validaPaciente(paciente) {
+    var erros = [];
+
+    if (!validaPeso(paciente.peso) && validaAltura(paciente.altura)) {
+        erros.push('Peso inválido!');
+    }
+    if (validaPeso(paciente.peso) && !validaAltura(paciente.altura)) {
+        erros.push('Altura inválido!');
+    }
+    if (!validaAltura(paciente.altura) && !validaPeso(paciente.peso)) {
+        erros.push('Peso e Altura inválidos!');
+    }
+    return erros
 }
