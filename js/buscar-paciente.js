@@ -8,16 +8,32 @@ botaoAdicionar.addEventListener('click', function () {
     xhr.open('GET', 'https://api-pacientes.herokuapp.com/pacientes');
     //Carregando os dados
     xhr.addEventListener('load', function () {
-        //Imprimindo os dados no console
-        //console.log(xhr.responseText);
 
-        var resposta = xhr.responseText;
-        //Converter o arquivo JSON 
-        var pacientes = JSON.parse(resposta);
-        //Pegando cada paciente e adicioando na tabela
-        pacientes.forEach(function (paciente) {
-            adicionarPacienteNaTabela(paciente);
-        })
+        //Pegar o span para mostrar o erro de conexão
+        var erroAjax = document.querySelector("#erro-ajax");
+        //Verificando erros
+        if (xhr.status === 200) {
+            //Se caso não houver erro, será adicionado aclasse invisivel ao span que ocultará a mensagen de erro
+            erroAjax.classList.add('invisivel');
+            //Imprimindo os dados no console
+            //console.log(xhr.responseText);
+            var resposta = xhr.responseText;
+            //Converter o arquivo JSON 
+            var pacientes = JSON.parse(resposta);
+            //Pegando cada paciente e adicioando na tabela
+            pacientes.forEach(function (paciente) {
+                adicionarPacienteNaTabela(paciente);
+            });
+        } else {
+            //Mostra no console o status e o erro
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            //exibe na tela através de um alert o erro
+            alert("Error: " + xhr.status + " " + xhr.responseText);
+            //mostra através de um span a mensagem de erro, tirando a classe que ocultava o span
+            erroAjax.classList.remove('invisivel');
+        }
+
     })
     xhr.send();
 })
