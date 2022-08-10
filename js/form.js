@@ -9,8 +9,6 @@ function submitForm(event) {
     //Pegar valores que estão nos inputs
     var form = document.querySelector('#form-adiciona');
     var paciente = getInformacoes(form);
-    //Monta o tr do novo paciente para ser inserido na tabela
-    var pacienteTr = montarTabela(paciente);
     //Validando as informações
     var erros = validaPaciente(paciente);
     if (erros.length > 0) {
@@ -18,13 +16,21 @@ function submitForm(event) {
         return;
     }
 
-    //Insere os dados do novo paciente dentro da tabela pacientes
-    var tabela = document.querySelector('#tabela-pacientes');
-    tabela.appendChild(pacienteTr);
+    adicionarPacienteNaTabela(paciente);
+
     form.reset();
     var mensagensErro = document.querySelector('#mensagens-erro');
     mensagensErro.innerHTML = '';
     alert('Enviado com sucesso!');
+
+}
+
+function adicionarPacienteNaTabela(paciente) {
+    //Monta o tr do novo paciente para ser inserido na tabela
+    var pacienteTr = montarTabela(paciente);
+    //Insere os dados do novo paciente dentro da tabela pacientes
+    var tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(pacienteTr);
 
 }
 
